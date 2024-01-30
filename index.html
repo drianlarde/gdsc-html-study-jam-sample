@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumpia Order Page</title>
+    <style>
+      /* Basic Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Typography */
+      body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        background-color: #f4f7f6;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      /* Navigation Bar */
+      nav {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 0;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+      }
+
+      nav ul li {
+        margin: 0 10px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 50px 20px;
+        background: #eee;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      /* Main Content */
+      main {
+        padding: 20px;
+        max-width: 800px;
+        margin: auto;
+      }
+
+      section {
+        background: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      section h2 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      /* Order Form Styles */
+      .input-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .print-button {
+        display: block;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        text-align: center;
+      }
+
+      .print-button:hover {
+        background-color: #0056b3;
+      }
+
+      .order-number {
+        display: none;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 20px;
+      }
+
+      @media print {
+        nav,
+        .hero,
+        main > section:first-child,
+        footer {
+          display: none;
+        }
+
+        .container {
+          box-shadow: none;
+        }
+
+        .order-number {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#order">Order</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="hero" id="hero">
+      <h1>Welcome to Lumpia Order Page</h1>
+      <p>Delicious lumpia at your doorstep</p>
+    </div>
+
+    <main>
+      <section id="about">
+        <h2>About Us</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et
+          elementum nulla, sed vehicula ante. Mauris neque felis, volutpat nec
+          ullamcorper eget, sagittis vel enim. Nam sit amet ante egestas,
+          gravida tellus vitae, semper eros. Nullam mattis erat quis metus
+          dignissim, id elementum ipsum fermentum. Nulla facilisi.
+        </p>
+      </section>
+
+      <section id="order">
+        <h2>Place Your Order</h2>
+        <div class="container">
+          <div class="input-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" />
+          </div>
+
+          <div class="input-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" />
+          </div>
+
+          <div class="input-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" min="1" max="100" />
+          </div>
+
+          <div class="input-group">
+            <label for="special">Special Instructions:</label>
+            <textarea id="special" rows="4"></textarea>
+          </div>
+
+          <button class="print-button" onclick="printOrder();">
+            Print Order
+          </button>
+          <div class="order-number" id="orderNumber"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Lumpia House. All rights reserved.</p>
+    </footer>
+
+    <script>
+      let orderNumber = 0;
+
+      function printOrder() {
+        orderNumber++;
+        const orderNumberDiv = document.getElementById("orderNumber");
+        orderNumberDiv.textContent = "Order Number: " + orderNumber;
+        orderNumberDiv.style.display = "block";
+        window.print();
+        orderNumberDiv.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
