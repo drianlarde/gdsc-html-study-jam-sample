@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GDSC PLM - How To Make Lumpia!? (HTML Study Jam)</title>
+    <title>How To Make Lumpia!? (HTML Study Jam) - GDSC PLM</title>
+
+    <!-- Change Tab Icon -->
+    <link rel="icon" href="https://logogen.gdscasu.com/logos/gdsc-logo.png" />
+
     <style>
       /* Basic Reset */
       * {
@@ -155,11 +159,8 @@
         z-index: 1;
       }
 
-      .no-print {
-        display: none;
-      }
-
       @media print {
+        /* Existing rules */
         nav,
         .hero,
         main > section:first-child,
@@ -173,6 +174,16 @@
 
         .order-number {
           display: block;
+        }
+
+        #about {
+          display: none;
+        }
+
+        /* Add these rules to hide the characters in print view */
+        .cooking-mama-char,
+        .cooking-ringo-char {
+          display: none;
         }
       }
     </style>
@@ -210,7 +221,7 @@
         <p>Join us in an immersive HTML workshop and learn by making!</p>
       </section>
 
-      <section id="about" class="no-print">
+      <section id="about">
         <h2>About the Event</h2>
         <p>
           An immersive HTML workshop where we'll delve into HTML basics and put
