@@ -160,11 +160,12 @@
       }
 
       @media print {
-        /* Existing rules */
         nav,
         .hero,
-        main > section:first-child,
-        footer {
+        #about,
+        footer,
+        .cooking-mama-char,
+        .cooking-ringo-char {
           display: none;
         }
 
@@ -176,13 +177,7 @@
           display: block;
         }
 
-        #about {
-          display: none;
-        }
-
-        /* Add these rules to hide the characters in print view */
-        .cooking-mama-char,
-        .cooking-ringo-char {
+        .print-button {
           display: none;
         }
       }
