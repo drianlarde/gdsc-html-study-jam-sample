@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lumpia Order Page</title>
+    <title>GDSC PLM - How To Make Lumpia!? (HTML Study Jam)</title>
     <style>
       /* Basic Reset */
       * {
@@ -14,17 +14,27 @@
 
       /* Typography */
       body {
+        position: relative;
         font-family: "Helvetica Neue", Arial, sans-serif;
         background-color: #f4f7f6;
         line-height: 1.6;
         color: #333;
+        overflow-x: hidden;
       }
 
       /* Navigation Bar */
       nav {
-        background-color: #007bff;
+        background-color: #f4f4f4;
         color: white;
-        padding: 10px 0;
+        padding: 10px;
+        padding-inline: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav .logo {
+        height: 50px; /* Adjust logo size */
       }
 
       nav ul {
@@ -38,9 +48,8 @@
       }
 
       nav a {
-        color: white;
+        color: black;
         text-decoration: none;
-        font-weight: bold;
       }
 
       /* Hero Section */
@@ -128,6 +137,28 @@
         margin-top: 20px;
       }
 
+      .cooking-mama-char {
+        position: absolute;
+        top: 100px;
+        right: -150px;
+        width: 500px;
+        transform: rotate(-30deg);
+        z-index: 1;
+      }
+
+      .cooking-ringo-char {
+        position: absolute;
+        top: 300px;
+        left: -200px;
+        width: 500px;
+        transform: rotate(20deg);
+        z-index: 1;
+      }
+
+      .no-print {
+        display: none;
+      }
+
       @media print {
         nav,
         .hero,
@@ -147,36 +178,51 @@
     </style>
   </head>
   <body>
+    <img
+      src="./cooking-mama.png"
+      alt="Cooking Mama Character"
+      class="cooking-mama-char"
+    />
+    <img
+      src="./cooking-ringo.png"
+      alt="Cooking Ringo Character"
+      class="cooking-ringo-char"
+    />
+
     <header>
       <nav>
+        <img
+          src="https://logogen.gdscasu.com/logos/gdsc-logo.png"
+          alt="GDSC Logo"
+          class="logo"
+        />
         <ul>
           <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#order">Order</a></li>
+          <li><a href="#about">About the Event</a></li>
+          <li><a href="#order">Make an Order</a></li>
         </ul>
       </nav>
     </header>
 
-    <div class="hero" id="hero">
-      <h1>Welcome to Lumpia Order Page</h1>
-      <p>Delicious lumpia at your doorstep</p>
-    </div>
-
     <main>
-      <section id="about">
-        <h2>About Us</h2>
+      <section class="hero" id="hero">
+        <h1>GDSC PLM - How To Make Lumpia!? (HTML Study Jam)</h1>
+        <p>Join us in an immersive HTML workshop and learn by making!</p>
+      </section>
+
+      <section id="about" class="no-print">
+        <h2>About the Event</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et
-          elementum nulla, sed vehicula ante. Mauris neque felis, volutpat nec
-          ullamcorper eget, sagittis vel enim. Nam sit amet ante egestas,
-          gravida tellus vitae, semper eros. Nullam mattis erat quis metus
-          dignissim, id elementum ipsum fermentum. Nulla facilisi.
+          An immersive HTML workshop where we'll delve into HTML basics and put
+          their knowledge to the test by creating an order form. This study jam
+          is perfect for beginners and those looking to deepen their
+          understanding of HTML.
         </p>
       </section>
 
       <section id="order">
-        <h2>Place Your Order</h2>
-        <div class="container">
+        <h2>Try Making Your Lumpia Order!</h2>
+        <form class="container" onsubmit="printOrder(); return false;">
           <div class="input-group">
             <label for="name">Name:</label>
             <input type="text" id="name" />
@@ -197,27 +243,37 @@
             <textarea id="special" rows="4"></textarea>
           </div>
 
-          <button class="print-button" onclick="printOrder();">
-            Print Order
-          </button>
+          <button type="submit" class="print-button">Print Order</button>
           <div class="order-number" id="orderNumber"></div>
-        </div>
+        </form>
       </section>
     </main>
 
     <footer>
-      <p>&copy; 2024 Lumpia House. All rights reserved.</p>
+      <p>&copy; 2024 GDSC PLM Lumpia House. All rights reserved.</p>
     </footer>
 
     <script>
+      // Initialize order number
       let orderNumber = 0;
 
       function printOrder() {
+        // Increment order number
         orderNumber++;
+
+        // Get order number div element to display order number dynamically
         const orderNumberDiv = document.getElementById("orderNumber");
+
+        // Replace div content with order number
         orderNumberDiv.textContent = "Order Number: " + orderNumber;
+
+        // Display order number div
         orderNumberDiv.style.display = "block";
+
+        // Print order
         window.print();
+
+        // Hide order number div
         orderNumberDiv.style.display = "none";
       }
     </script>
